@@ -1,0 +1,4 @@
+migrations
+app.db
+venv
+secretKeys
