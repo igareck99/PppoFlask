@@ -10,18 +10,19 @@ app.secret_key = secret_key
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-class Ticket(db.Model):
-    __tablename__ = 'ticket'
+class Race(db.Model):
+    __tablename__ = 'race'
     id = db.Column(db.Integer, primary_key=True)
-    ids = db.Column(db.String(200), index=True)
+    name = db.Column(db.String(200), index=True)
     date = db.Column(db.DateTime)
-    groups = db.Column(db.String(40))
-    datas = db.Column(db.String(40))
+    organizer = db.Column(db.String(40))
+    place = db.Column(db.String(160))
 
-    def __init__(self, ids, date, groups):
-        self.ids = ids
+    def __init__(self, name, date, organizer, place):
+        self.name = name
         self.date = date
-        self.groups = groups
+        self.organizer = organizer
+        self.place = place
 
     def __repr__(self):
         return f'{self.ids}'
